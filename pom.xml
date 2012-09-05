@@ -5,11 +5,10 @@
 	<parent>
 		<groupId>cn.com.rebirth</groupId>
 		<artifactId>rebirth-parent</artifactId>
-		<version>0.0.1.RC1-SNAPSHOT</version>
+		<version>0.0.2.RC5.SNAPSHOT</version>
 	</parent>
 	<artifactId>rebirth-search-server</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1.RC1-SNAPSHOT</version>
 	<name>Rebirth :: Module :: rebirth-search-server</name>
 	<properties>
 		<index.store.type>niofs</index.store.type>
@@ -23,6 +22,10 @@
 		<dependency>
 			<groupId>cn.com.rebirth</groupId>
 			<artifactId>rebirth-commons</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cn.com.rebirth</groupId>
+			<artifactId>rebirth-core</artifactId>
 		</dependency>
 		<dependency>
 			<artifactId>rebirth-analyzer</artifactId>
@@ -137,7 +140,6 @@
 									<goal>single</goal>
 								</goals>
 								<configuration>
-
 									<descriptors>
 										<descriptor>assembly/assembly-production.xml</descriptor>
 									</descriptors>
@@ -169,6 +171,26 @@
 						<id>attach-sources</id>
 						<goals>
 							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<file>${project.artifactId}-${project.version}-production.zip</file>
+					<packaging>zip</packaging>
+					<groupId>${project.groupId}</groupId>
+					<artifactId>${project.artifactId}</artifactId>
+					<version>${project.version}</version>
+				</configuration>
+				<executions>
+					<execution>
+						<id>deploy-zip-file</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
 						</goals>
 					</execution>
 				</executions>

@@ -19,7 +19,7 @@
 			<fileMode>0755</fileMode>
 			<directoryMode>0755</directoryMode>
 		</dependencySet>
-
+		
 		<dependencySet>
 			<outputDirectory>/lib</outputDirectory>
 		</dependencySet>
@@ -40,6 +40,13 @@
 			<directoryMode>0755</directoryMode>
 			<filtered>true</filtered>
 		</fileSet>
+		<fileSet>
+            <directory>lib/sigar</directory>
+            <outputDirectory>lib/sigar</outputDirectory>
+            <includes>
+                <include>*</include>
+            </includes>
+        </fileSet>
 	</fileSets>
 
 	<files>
